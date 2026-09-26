@@ -1,0 +1,284 @@
+/* ============================================================
+   野球モンスターズ  styles.css
+   スマホ縦画面が基本。iPadでも大きすぎないように中央寄せ。
+   ============================================================ */
+
+:root{
+  --field:      #0b3d2e;   /* 球場の芝（背景） */
+  --field-2:    #13563f;
+  --board:      #0d2b4e;   /* スコアボードの紺 */
+  --board-line: #1e4a7a;
+  --card:       #ffffff;
+  --ink:        #1b2430;
+  --ink-soft:   #5a6b7c;
+  --accent:     #ff8a1f;   /* オレンジ（押すボタン） */
+  --accent-2:   #ffd23f;   /* 黄色（点数） */
+  --win:        #22b573;
+  --gray:       #c8d0d8;
+  --radius:     18px;
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+
+html{ height:100%; }
+body{ min-height:100%; }   /* height:100% にすると下がはみ出してスクロールできなくなる */
+
+body{
+  background:
+    radial-gradient(circle at 50% 0%, var(--field-2) 0%, var(--field) 60%);
+  color:var(--ink);
+  font-family:-apple-system, BlinkMacSystemFont, "Hiragino Maru Gothic ProN",
+              "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  font-weight:700;
+  padding-bottom:calc(112px + env(safe-area-inset-bottom));
+  -webkit-text-size-adjust:100%;
+}
+
+/* 画面 */
+.screen{
+  max-width:560px;
+  margin:0 auto;
+  padding:16px 14px 8px;
+  animation:fade .18s ease-out;
+}
+@keyframes fade{ from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:none} }
+[hidden]{ display:none !important; }
+
+/* ---------- ボタン ---------- */
+.btn{
+  display:block; width:100%;
+  min-height:56px;
+  border:none; border-radius:var(--radius);
+  background:var(--accent); color:#fff;
+  font-size:20px; font-weight:800; font-family:inherit;
+  box-shadow:0 4px 0 #d96a00;
+  cursor:pointer;
+}
+.btn:active{ transform:translateY(3px); box-shadow:0 1px 0 #d96a00; }
+.btn-huge{ min-height:72px; font-size:26px; border-radius:24px; }
+.btn-sub{
+  background:#fff; color:var(--ink); box-shadow:0 4px 0 #b9c4cf;
+  font-size:17px; min-height:50px;
+}
+.btn-sub:active{ box-shadow:0 1px 0 #b9c4cf; }
+.btn-green{ background:var(--win); box-shadow:0 4px 0 #178a56; }
+.btn-green:active{ box-shadow:0 1px 0 #178a56; }
+.btn-row{ display:flex; gap:10px; }
+.btn-row .btn{ flex:1; }
+
+/* ---------- スタート画面 ---------- */
+.start-screen{
+  min-height:100svh; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; gap:22px; text-align:center;
+}
+.start-ball{ font-size:74px; animation:spin 6s linear infinite; }
+@keyframes spin{ to{ transform:rotate(360deg) } }
+.start-card{
+  width:min(58vw, 230px); border-radius:12px;
+  box-shadow:0 10px 26px rgba(0,0,0,.45);
+  animation:pop .5s ease-out;
+}
+.start-title{
+  color:#fff; font-size:32px; line-height:1.15; letter-spacing:.02em;
+  margin-top:14px;
+  text-shadow:0 4px 0 #062a1f, 0 0 18px rgba(255,210,63,.35);
+}
+
+/* 泰志のアイコン */
+.ava{
+  width:52px; height:52px; border-radius:50%; object-fit:cover;
+  border:3px solid var(--accent-2); background:#0d2b4e;
+  display:block; margin:0 auto 2px;
+}
+.ava-big{ width:92px; height:92px; border-width:4px; }
+.vs-face-big{ font-size:72px; line-height:1.1; }
+.start-lead{ color:var(--accent-2); font-size:19px; }
+.start-screen .btn{ max-width:320px; }
+
+/* ---------- 対戦カード ---------- */
+.vs-card{
+  background:linear-gradient(180deg,#123f6e,#0d2b4e);
+  border:3px solid var(--board-line);
+  border-radius:22px; padding:14px 12px; color:#fff; text-align:center;
+  box-shadow:0 6px 16px rgba(0,0,0,.28);
+}
+.vs-label{ font-size:13px; color:#9fc4e8; letter-spacing:.08em; }
+.vs-row{ display:flex; align-items:center; justify-content:space-around; margin-top:6px; }
+.vs-side{ flex:1; }
+.vs-name{ font-size:16px; }
+.vs-score{ font-size:54px; line-height:1; color:var(--accent-2); font-weight:900; }
+.vs-mid{ font-size:18px; color:#9fc4e8; padding:0 4px; }
+.vs-face{ font-size:46px; line-height:56px; }
+.vs-day{ margin-top:6px; font-size:13px; color:#9fc4e8; }
+
+/* ---------- スコアボード ---------- */
+.board{
+  margin-top:12px; background:var(--board); border-radius:14px;
+  border:2px solid var(--board-line); overflow-x:auto; padding:6px;
+}
+table.score{ width:100%; border-collapse:collapse; color:#fff; font-size:15px; }
+table.score th, table.score td{
+  border:1px solid var(--board-line); text-align:center; padding:5px 2px; min-width:26px;
+}
+table.score th{ color:#9fc4e8; font-size:12px; font-weight:700; }
+table.score td.name{ text-align:left; padding-left:8px; min-width:74px; font-size:13px; }
+table.score td.total{ background:#15365f; color:var(--accent-2); font-size:17px; }
+table.score .dash{ color:#5d82ab; }
+
+/* ---------- 見出し ---------- */
+.h{ color:#fff; font-size:17px; margin:18px 4px 8px; display:flex; align-items:center; gap:6px; }
+.h .badge{
+  background:var(--accent-2); color:#5a3a00; font-size:12px;
+  border-radius:999px; padding:2px 8px;
+}
+
+/* ---------- チャレンジカード ---------- */
+.ch-card{
+  width:100%; display:flex; align-items:center; gap:12px;
+  background:var(--card); border:none; border-radius:var(--radius);
+  padding:14px; margin-bottom:10px; text-align:left;
+  font-family:inherit; font-weight:800; color:var(--ink);
+  box-shadow:0 4px 0 #b9c4cf; cursor:pointer;
+}
+.ch-card:active{ transform:translateY(3px); box-shadow:0 1px 0 #b9c4cf; }
+.ch-icon{ font-size:36px; width:44px; text-align:center; }
+.ch-body{ flex:1; }
+.ch-title{ font-size:20px; }
+.ch-note{ font-size:13px; color:var(--ink-soft); margin-top:2px; font-weight:700; }
+.ch-card.done{ background:#e8f8ef; box-shadow:0 4px 0 #a8ddc0; }
+.ch-done-mark{ color:var(--win); font-size:17px; }
+
+/* ---------- 連続記録 ---------- */
+.streak{
+  margin-top:8px; background:#ffedd5; border-radius:14px; padding:10px 14px;
+  color:#a04a00; font-size:18px; text-align:center;
+}
+
+/* ---------- 選手カード ---------- */
+.grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
+@media (min-width:520px){ .grid{ grid-template-columns:repeat(3,1fr); } }
+.pcard{
+  background:var(--card); border-radius:14px; padding:10px;
+  box-shadow:0 3px 0 #b9c4cf; position:relative; overflow:hidden;
+}
+.pcard.locked{ background:#e7ebef; color:#96a3b0; box-shadow:0 3px 0 #cfd6dd; }
+.pcard .pname{ font-size:16px; line-height:1.25; }
+.pcard .pteam{ font-size:11px; color:var(--ink-soft); margin-top:3px; font-weight:700; }
+.pcard.locked .pteam{ color:#a7b2bd; }
+.pcard .pget{
+  margin-top:6px; font-size:12px; color:#fff; background:var(--win);
+  display:inline-block; border-radius:999px; padding:2px 8px;
+}
+.pcard .pyear{
+  position:absolute; top:0; right:0; background:var(--board); color:#cfe4f7;
+  font-size:10px; padding:2px 6px; border-bottom-left-radius:8px;
+}
+.pcard.locked .pyear{ background:#b6c0ca; color:#fff; }
+
+/* ---------- タブ ---------- */
+.tabs{ display:flex; gap:6px; overflow-x:auto; padding:2px 0 8px; }
+.tab{
+  flex:0 0 auto; border:none; border-radius:999px; padding:8px 14px;
+  background:rgba(255,255,255,.18); color:#fff; font-family:inherit;
+  font-weight:800; font-size:14px; cursor:pointer;
+}
+.tab.is-on{ background:var(--accent-2); color:#5a3a00; }
+
+/* ---------- モンスター図鑑 ---------- */
+.mcard{
+  background:var(--card); border-radius:16px; padding:12px; text-align:center;
+  box-shadow:0 3px 0 #b9c4cf;
+}
+.mcard .mface{ font-size:40px; }
+.mcard .mname{ font-size:15px; margin-top:4px; }
+.mcard .mnote{ font-size:11px; color:var(--ink-soft); margin-top:4px; font-weight:700; }
+.mcard.locked{ background:#e7ebef; }
+.mcard.locked .mface{ filter:grayscale(1) brightness(.6); opacity:.45; }
+.mcard.locked .mname{ color:#96a3b0; }
+
+/* ---------- 記録 ---------- */
+.stat-list{ background:var(--card); border-radius:16px; overflow:hidden; }
+.stat-row{
+  display:flex; justify-content:space-between; align-items:center;
+  padding:12px 14px; border-bottom:1px solid #edf1f4; font-size:15px;
+}
+.stat-row:last-child{ border-bottom:none; }
+.stat-row b{ font-size:20px; color:#0d2b4e; }
+
+/* ---------- シート ---------- */
+.sheet-bg{ position:fixed; inset:0; background:rgba(0,0,0,.45); z-index:40; }
+.sheet{
+  position:fixed; left:0; right:0; bottom:0; z-index:41;
+  max-width:560px; margin:0 auto;
+  background:#f4f7f9; border-radius:22px 22px 0 0;
+  padding:16px 14px calc(20px + env(safe-area-inset-bottom));
+  max-height:86svh; overflow-y:auto;
+  box-shadow:0 -6px 24px rgba(0,0,0,.3);
+  animation:up .2s ease-out;
+}
+@keyframes up{ from{ transform:translateY(100%) } to{ transform:none } }
+.sheet h2{ font-size:21px; text-align:center; margin-bottom:4px; }
+.sheet .sheet-sub{ text-align:center; font-size:13px; color:var(--ink-soft); margin-bottom:12px; }
+.sheet-sec{ font-size:13px; color:var(--ink-soft); margin:14px 2px 6px; }
+.pick{
+  width:100%; display:flex; align-items:center; gap:10px;
+  background:#fff; border:none; border-radius:14px; padding:12px;
+  margin-bottom:8px; font-family:inherit; font-weight:800; text-align:left;
+  box-shadow:0 2px 0 #cfd6dd; cursor:pointer; color:var(--ink);
+}
+.pick:active{ transform:translateY(2px); box-shadow:none; }
+.pick.is-on{ outline:3px solid var(--accent); }
+.pick .pk-name{ font-size:17px; }
+.pick .pk-team{ font-size:12px; color:var(--ink-soft); }
+.pick .pk-tag{
+  margin-left:auto; font-size:11px; background:#eef2f6; color:var(--ink-soft);
+  border-radius:999px; padding:3px 8px;
+}
+.field{
+  width:100%; padding:14px; font-size:17px; font-family:inherit; font-weight:700;
+  border:2px solid var(--gray); border-radius:12px; margin-bottom:10px; background:#fff;
+}
+.hint{ font-size:13px; color:#b45309; background:#fff7ed; border-radius:12px; padding:10px; margin-bottom:10px; }
+
+/* ---------- オーバーレイ（結果） ---------- */
+.overlay{
+  position:fixed; inset:0; z-index:60; overflow-y:auto;
+  background:linear-gradient(180deg,#0d2b4e,#0b3d2e);
+  padding:28px 18px calc(28px + env(safe-area-inset-bottom));
+  color:#fff; text-align:center;
+}
+.ov-inner{ max-width:520px; margin:0 auto; display:flex; flex-direction:column; gap:14px; }
+.ov-big{ font-size:44px; line-height:1.1; color:var(--accent-2); text-shadow:0 4px 0 #062a1f; }
+.ov-mid{ font-size:26px; }
+.ov-small{ font-size:15px; color:#bcd6ee; }
+.ov-get{
+  background:rgba(255,255,255,.12); border-radius:14px; padding:12px; font-size:18px;
+}
+.ov-get .team{ font-size:12px; color:#bcd6ee; display:block; margin-top:2px; }
+.ov-monster{ font-size:72px; }
+.pop{ animation:pop .35s ease-out; }
+@keyframes pop{ 0%{transform:scale(.6); opacity:0} 70%{transform:scale(1.08)} 100%{transform:scale(1); opacity:1} }
+
+/* ---------- 下メニュー ---------- */
+#nav{
+  position:fixed; left:0; right:0; bottom:0; z-index:30;
+  display:flex; background:#0d2b4e; border-top:2px solid var(--board-line);
+  padding-bottom:env(safe-area-inset-bottom);
+}
+.nav-btn{
+  flex:1; background:none; border:none; color:#7fa5cc;
+  font-family:inherit; font-weight:800; font-size:12px;
+  padding:8px 0 10px; display:flex; flex-direction:column; align-items:center; gap:3px;
+  cursor:pointer; min-height:62px;
+}
+.nav-btn span{ font-size:24px; }
+.nav-btn.is-on{ color:var(--accent-2); }
+
+/* ---------- iPadなど広い画面 ---------- */
+@media (min-width:700px){
+  body{ font-size:17px; }
+  .screen{ max-width:640px; padding-top:24px; }
+  .sheet{ max-width:640px; border-radius:22px; bottom:96px; }
+  .vs-score{ font-size:64px; }
+  .ov-big{ font-size:54px; }
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>野球モンスターズ</title>
+  <meta name="theme-color" content="#0b3d2e">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="野球モンスターズ">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="icon" href="icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ===== 初回スタート画面 ===== -->
+  <section id="screen-start" class="screen start-screen">
+    <div class="start-logo">
+      <div id="start-visual"><div class="start-ball">⚾</div></div>
+      <h1 class="start-title">野球モンスターズ</h1>
+    </div>
+    <p class="start-lead">泰志、モンスターとの試合を始めよう！</p>
+    <button class="btn btn-huge" data-action="start-game">ゲームスタート！</button>
+  </section>
+
+  <!-- ===== メイン ===== -->
+  <main id="main" hidden>
+    <section id="screen-home"     class="screen"></section>
+    <section id="screen-players"  class="screen" hidden></section>
+    <section id="screen-monsters" class="screen" hidden></section>
+    <section id="screen-records"  class="screen" hidden></section>
+  </main>
+
+  <!-- ===== 下メニュー ===== -->
+  <nav id="nav" hidden>
+    <button class="nav-btn is-on" data-action="go" data-screen="home"><span>🏟</span>ホーム</button>
+    <button class="nav-btn"       data-action="go" data-screen="players"><span>🧑‍🦱</span>選手</button>
+    <button class="nav-btn"       data-action="go" data-screen="monsters"><span>👹</span>モンスター</button>
+    <button class="nav-btn"       data-action="go" data-screen="records"><span>📊</span>記録</button>
+  </nav>
+
+  <!-- ===== 下から出るシート（選手えらび など） ===== -->
+  <div id="sheet-bg" class="sheet-bg" hidden data-action="close-sheet"></div>
+  <div id="sheet" class="sheet" hidden></div>
+
+  <!-- ===== 全画面の結果表示 ===== -->
+  <div id="overlay" class="overlay" hidden></div>
+
+  <script src="players.js"></script>
+  <script src="monsters.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
