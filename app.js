@@ -34,6 +34,17 @@ const REGULATION_DAYS = 7;   // 1試合の日数
 const TAISHI_FACE = '';
 const TAISHI_CARD = '';
 
+/* ------------------------------------------------------------
+   フォーム動画をさがすリンク（YouTubeの検索結果を開く）
+   動画そのものは持たず、検索ページへ行くだけなので、
+   動画が消えてもリンクが切れません。
+   ------------------------------------------------------------ */
+function videoUrl(p, kind) {
+  const isPitch = kind ? (kind === 'pitching') : (p.type === 'pitcher');
+  const q = p.name + ' ' + (isPitch ? '投球フォーム' : 'バッティングフォーム');
+  return 'https://www.youtube.com/results?search_query=' + encodeURIComponent(q);
+}
+
 /* 泰志の顔（写真がなければ絵文字） */
 function taishiFace(cls) {
   return TAISHI_FACE
@@ -463,6 +474,7 @@ function playerCard(p, col) {
     '<div class="pname">' + esc(p.name) + '</div>' +
     '<div class="pteam">' + esc(p.team) + '</div>' +
     (got ? '<div class="pget">GET × ' + col.getCount + '</div>' : '') +
+    '<a class="pvideo" href="' + videoUrl(p) + '" target="_blank" rel="noopener noreferrer">▶ フォーム動画</a>' +
     '</div>';
 }
 
@@ -570,6 +582,9 @@ function openPicker(kind, date, selectedId) {
       '<div class="pk-team">' + esc(p.team) + '</div></div></div>' +
       '<button class="btn btn-green btn-huge" data-action="done" >10回できた！</button>' +
       '<div style="height:10px"></div>' +
+      '<a class="btn btn-sub" href="' + videoUrl(p, kind) + '" target="_blank" rel="noopener noreferrer">' +
+      '▶ ' + esc(p.name) + 'のフォーム動画をさがす</a>' +
+      '<div style="height:6px"></div>' +
       '<button class="btn btn-sub" data-action="clear-pick">べつの選手にする</button>' +
       '<div style="height:6px"></div>' +
       '<button class="btn btn-sub" data-action="close-sheet">とじる</button>';

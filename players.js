@@ -108,13 +108,51 @@ const PLAYERS = [
   { id: "kozono_2026",      name: "小園海斗",     team: "広島東洋カープ",             type: "batter",  wbcYears: [2026],       group: "wbc" },
   { id: "shuto_2026",       name: "周東佑京",     team: "福岡ソフトバンクホークス",   type: "batter",  wbcYears: [2026],       group: "wbc" },
 
-  /* ---------------- レジェンド（WBC以外の名選手） ---------------- */
+  /* ---------------- レジェンド打者（WBC以外の名選手） ---------------- */
   { id: "oh_sadaharu",      name: "王貞治",       team: "読売ジャイアンツ",           type: "batter",  wbcYears: [], group: "legend" },
   { id: "nagashima",        name: "長嶋茂雄",     team: "読売ジャイアンツ",           type: "batter",  wbcYears: [], group: "legend" },
-  { id: "matsui_hideki",    name: "松井秀喜",     team: "ニューヨーク・ヤンキース",   type: "batter",  wbcYears: [], group: "legend" },
-  { id: "nomo",             name: "野茂英雄",     team: "ロサンゼルス・ドジャース",   type: "pitcher", wbcYears: [], group: "legend" },
+  { id: "ochiai",           name: "落合博満",     team: "中日ドラゴンズ",             type: "batter",  wbcYears: [], group: "legend" },
+  { id: "harimoto",         name: "張本勲",       team: "東映フライヤーズ",           type: "batter",  wbcYears: [], group: "legend" },
+  { id: "nomura_katsuya",   name: "野村克也",     team: "南海ホークス",               type: "batter",  wbcYears: [], group: "legend" },
+  { id: "kadota",           name: "門田博光",     team: "南海ホークス",               type: "batter",  wbcYears: [], group: "legend" },
+  { id: "fukumoto",         name: "福本豊",       team: "阪急ブレーブス",             type: "batter",  wbcYears: [], group: "legend" },
+  { id: "yamamoto_koji",    name: "山本浩二",     team: "広島東洋カープ",             type: "batter",  wbcYears: [], group: "legend" },
+  { id: "kinugasa",         name: "衣笠祥雄",     team: "広島東洋カープ",             type: "batter",  wbcYears: [], group: "legend" },
+  { id: "kakefu",           name: "掛布雅之",     team: "阪神タイガース",             type: "batter",  wbcYears: [], group: "legend" },
+  { id: "hara",             name: "原辰徳",       team: "読売ジャイアンツ",           type: "batter",  wbcYears: [], group: "legend" },
+  { id: "akiyama_koji",     name: "秋山幸二",     team: "西武ライオンズ",             type: "batter",  wbcYears: [], group: "legend" },
+  { id: "furuta",           name: "古田敦也",     team: "ヤクルトスワローズ",         type: "batter",  wbcYears: [], group: "legend" },
+  { id: "tatsunami",        name: "立浪和義",     team: "中日ドラゴンズ",             type: "batter",  wbcYears: [], group: "legend" },
+  { id: "maeda_tomonori",   name: "前田智徳",     team: "広島東洋カープ",             type: "batter",  wbcYears: [], group: "legend" },
+  { id: "matsui_hideki",    name: "松井秀喜",     team: "読売ジャイアンツ",           type: "batter",  wbcYears: [], group: "legend" },
+  { id: "matsui_yankees",   name: "松井秀喜",     team: "ニューヨーク・ヤンキース",   type: "batter",  wbcYears: [], group: "legend" },
+  { id: "ichiro_orix",      name: "イチロー",     team: "オリックス・ブルーウェーブ", type: "batter",  wbcYears: [], group: "legend" },
+
+  /* ---------------- レジェンド投手 ---------------- */
   { id: "kaneda",           name: "金田正一",     team: "国鉄スワローズ",             type: "pitcher", wbcYears: [], group: "legend" },
-  { id: "enatsu",           name: "江夏豊",       team: "阪神タイガース",             type: "pitcher", wbcYears: [], group: "legend" }
+  { id: "inao",             name: "稲尾和久",     team: "西鉄ライオンズ",             type: "pitcher", wbcYears: [], group: "legend" },
+  { id: "murayama",         name: "村山実",       team: "阪神タイガース",             type: "pitcher", wbcYears: [], group: "legend" },
+  { id: "enatsu",           name: "江夏豊",       team: "阪神タイガース",             type: "pitcher", wbcYears: [], group: "legend" },
+  { id: "suzuki_keishi",    name: "鈴木啓示",     team: "近鉄バファローズ",           type: "pitcher", wbcYears: [], group: "legend" },
+  { id: "yamada_hisashi",   name: "山田久志",     team: "阪急ブレーブス",             type: "pitcher", wbcYears: [], group: "legend" },
+  { id: "higashio",         name: "東尾修",       team: "西武ライオンズ",             type: "pitcher", wbcYears: [], group: "legend" },
+  { id: "kuo",              name: "郭泰源",       team: "西武ライオンズ",             type: "pitcher", wbcYears: [], group: "legend" },
+  { id: "watanabe_hisanobu",name: "渡辺久信",     team: "西武ライオンズ",             type: "pitcher", wbcYears: [], group: "legend" },
+  { id: "kudo",             name: "工藤公康",     team: "西武ライオンズ",             type: "pitcher", wbcYears: [], group: "legend" },
+  { id: "shiozaki",         name: "潮崎哲也",     team: "西武ライオンズ",             type: "pitcher", wbcYears: [], group: "legend" },
+  { id: "kishi",            name: "岸孝之",       team: "埼玉西武ライオンズ",         type: "pitcher", wbcYears: [], group: "legend" },
+  { id: "nishizaki",        name: "西崎幸広",     team: "日本ハムファイターズ",       type: "pitcher", wbcYears: [], group: "legend" },
+  { id: "akahori",          name: "赤堀元之",     team: "近鉄バファローズ",           type: "pitcher", wbcYears: [], group: "legend" },
+  { id: "nomo_kintetsu",    name: "野茂英雄",     team: "近鉄バファローズ",           type: "pitcher", wbcYears: [], group: "legend" },
+  { id: "nomo",             name: "野茂英雄",     team: "ロサンゼルス・ドジャース",   type: "pitcher", wbcYears: [], group: "legend" },
+  { id: "saito_masaki",     name: "斎藤雅樹",     team: "読売ジャイアンツ",           type: "pitcher", wbcYears: [], group: "legend" },
+  { id: "kuwata",           name: "桑田真澄",     team: "読売ジャイアンツ",           type: "pitcher", wbcYears: [], group: "legend" },
+  { id: "makihara",         name: "槙原寛己",     team: "読売ジャイアンツ",           type: "pitcher", wbcYears: [], group: "legend" },
+  { id: "imanaka",          name: "今中慎二",     team: "中日ドラゴンズ",             type: "pitcher", wbcYears: [], group: "legend" },
+  { id: "ito_tomohito",     name: "伊藤智仁",     team: "ヤクルトスワローズ",         type: "pitcher", wbcYears: [], group: "legend" },
+  { id: "takatsu",          name: "高津臣吾",     team: "ヤクルトスワローズ",         type: "pitcher", wbcYears: [], group: "legend" },
+  { id: "sasaki_kazuhiro",  name: "佐々木主浩",   team: "横浜ベイスターズ",           type: "pitcher", wbcYears: [], group: "legend" },
+  { id: "kuroda",           name: "黒田博樹",     team: "広島東洋カープ",             type: "pitcher", wbcYears: [], group: "legend" }
 ];
 
 /* WBCコレクションのタブに出す大会。増やすときはここに足す */

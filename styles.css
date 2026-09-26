@@ -56,6 +56,7 @@ body{
 }
 .btn:active{ transform:translateY(3px); box-shadow:0 1px 0 #d96a00; }
 .btn-huge{ min-height:72px; font-size:26px; border-radius:24px; }
+a.btn{ display:flex; align-items:center; justify-content:center; text-decoration:none; padding:0 12px; }
 .btn-sub{
   background:#fff; color:var(--ink); box-shadow:0 4px 0 #b9c4cf;
   font-size:17px; min-height:50px;
@@ -169,6 +170,12 @@ table.score .dash{ color:#5d82ab; }
   margin-top:6px; font-size:12px; color:#fff; background:var(--win);
   display:inline-block; border-radius:999px; padding:2px 8px;
 }
+.pcard .pvideo{
+  display:block; margin-top:8px; text-align:center; text-decoration:none;
+  font-size:12px; color:#0d2b4e; background:#eef2f6;
+  border-radius:999px; padding:5px 6px; min-height:28px;
+}
+.pcard.locked .pvideo{ background:#dfe5ea; color:#7d8b98; }
 .pcard .pyear{
   position:absolute; top:0; right:0; background:var(--board); color:#cfe4f7;
   font-size:10px; padding:2px 6px; border-bottom-left-radius:8px;

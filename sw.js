@@ -5,7 +5,7 @@
      スマホ側に新しいバージョンが届きます。
    ============================================================ */
 
-const CACHE = 'baseball-monsters-v1';
+const CACHE = 'baseball-monsters-v2';
 
 const FILES = [
   './',
